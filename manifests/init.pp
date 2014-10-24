@@ -100,7 +100,8 @@ class amavisd (
     owner   => $amavisd::config_file_owner,
     group   => $amavisd::config_file_group,
     mode    => $amavisd::config_file_source,
-    content => template($amavisd::template),
+    source  => $manage_file_source,
+    content => $manage_file_content,
     notify  => $manage_service_autorestart,
   }
 
