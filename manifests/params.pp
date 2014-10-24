@@ -40,5 +40,7 @@ class amavisd::params {
   $firewall_src        = ['0.0.0.0', '::/0']
   $firewall_dst        = ['0.0.0.0', '::/0']
   $firewall_port       = 10024
+  $manage_spamassassin = true
+  $manage_razor        = true
   $options             = {}
 }

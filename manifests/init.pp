@@ -18,6 +18,8 @@ class amavisd (
   $firewall_src        = $amavisd::params::firewall_src,
   $firewall_dst        = $amavisd::params::firewall_dst,
   $firewall_port       = $amavisd::params::firewall_port,
+  $manage_spamassassin = $amavisd::params::manage_spamassassin,
+  $manage_razor        = $amavisd::params::manage_razor,
   $options             = {},
 ) inherits amavisd::params {
 
@@ -26,6 +28,8 @@ class amavisd (
   $bool_disableboot         = any2bool($disableboot)
   $bool_service_autorestart = any2bool($service_autorestart)
   $bool_firewall            = any2bool($firewall)
+  $bool_manage_spamassassin = any2bool($manage_spamassassin)
+  $bool_manage_razor        = any2bool($manage_razor)
 
   $manage_package_ensure = $amavisd::bool_absent ? {
     true  => 'absent',
@@ -52,7 +56,7 @@ class amavisd (
   }
 
   $manage_service_autorestart = $amavisd::bool_service_autorestart ? {
-    true  => "Service['amavisd']",
+    true  => "Service[amavisd]",
     false => undef,
   }
 
@@ -74,6 +78,14 @@ class amavisd (
   $manage_directory_ensure = $amavisd::bool_absent ? {
     true  => 'absent',
     false => 'directory',
+  }
+
+  if $bool_manage_spamassassin == true {
+    include ::amavisd::spamassassin
+  }
+
+  if $bool_manage_razor == true {
+    include ::amavisd::razor
   }
 
   package { 'amavisd':
