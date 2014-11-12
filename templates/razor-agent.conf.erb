@@ -1,0 +1,22 @@
+# File managed by Puppet
+#
+# Razor2 config file
+#
+# see razor-agent.conf(5) man page
+#
+
+debuglevel             = <%= scope.function_pick([@options['debuglevel'], 3]) %>
+identity               = <%= scope.function_pick([@options['identity'], 'identity']) %>
+ignorelist             = <%= scope.function_pick([@options['ignorelist'], 0]) %>
+listfile_catalogue     = <%= scope.function_pick([@options['listfile_catalogue'], 'servers.catalogue.lst']) %>
+listfile_discovery     = <%= scope.function_pick([@options['listfile_discovery'], 'servers.discovery.lst']) %>
+listfile_nomination    = <%= scope.function_pick([@options['listfile_nomination'], 'servers.nomination.lst']) %>
+logfile                = <%= scope.function_pick([@options['logfile'], 'razor-agent.log']) %>
+logic_method           = <%= scope.function_pick([@options['logic_method'], 4]) %>
+min_cf                 = <%= scope.function_pick([@options['min_cf'], 'ac']) %>
+razordiscovery         = <%= scope.function_pick([@options['razordiscovery'], 'discovery.razor.cloudmark.com']) %>
+rediscovery_wait       = <%= scope.function_pick([@options['rediscovery_wait'], 172800]) %>
+report_headers         = <%= scope.function_pick([@options['report_headers'], 1]) %>
+turn_off_discovery     = <%= scope.function_pick([@options['turn_off_discovery'], 0]) %>
+use_engines            = <%= scope.function_pick([@options['use_engines'], '4,8']) %>
+whitelist              = <%= scope.function_pick([@options['whitelist'], 'razor-whitelist']) %>

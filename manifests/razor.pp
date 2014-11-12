@@ -1,7 +1,7 @@
 # Documentation goes here
 class amavisd::razor (
   $source       = '',
-  $template     = '',
+  $template     = 'amavisd/razor-agent.conf.erb',
   $firewall_dst = [ '0.0.0.0/0', '::/0' ],
 ) {
 

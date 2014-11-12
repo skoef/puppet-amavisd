@@ -1,7 +1,7 @@
 # Documentation goes here
 class amavisd::spamassassin (
   $source       = '',
-  $template     = '',
+  $template     = 'amavisd/spamassassin-local.cf.erb',
   $firewall_dst = [
     'spamassassin.apache.org',
     'updates.spamassasin.org',
